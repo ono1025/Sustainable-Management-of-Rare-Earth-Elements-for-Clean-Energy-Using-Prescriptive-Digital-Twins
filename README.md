@@ -22,11 +22,3 @@ A path toward circular economy practices in REE supply chains.
 
 Future integration with Reinforcement Learning and Physics-Informed Neural Networks (PINNs).
 
-📁 Contents
-/poster/ – Final conference poster (PDF)
-
-/presentation/ – Slide deck (if applicable)
-
-/data-model/ – Example workflows or simulation setups
-
-/docs/ – Supporting literature and reference material
