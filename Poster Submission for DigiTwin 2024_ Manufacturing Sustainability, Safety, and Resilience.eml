@@ -1,0 +1,630 @@
+Delivered-To: mahfuz34@student.sust.edu
+Received: by 2002:a2e:b170:0:b0:2f2:b7c3:3e61 with SMTP id a16csp1519240ljm;
+        Mon, 30 Sep 2024 15:03:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXUmMVtYefqFubHjbeTyjGByGbZBKa+qR7cMI1y++y6ppQ+OtO+FcjsbGm2MtwHNoFEKezvCEG+xQ==@student.sust.edu
+X-Google-Smtp-Source: AGHT+IHPmhAVMf+l4Z196jl4/0AaYdDe1pvWqe2acEjqqX1MwuJUly64b25/MO+QQQp+csuxu2eQ
+X-Received: by 2002:a05:6a21:9688:b0:1d3:2759:bf97 with SMTP id adf61e73a8af0-1d4fa78fd2dmr17672632637.35.1727733817401;
+        Mon, 30 Sep 2024 15:03:37 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1727733817; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=QyWr5pZ279YKi+xhBc3gOLqfuh/o3QUA4fcFML94arXsPGO68E3zK8fxC6H+m3ybIu
+         12SqiUsNnOnlsnYhDEXcBRuX60ZfoB0fuRv1O5Hk3b+hw5yOylvLNcMH72+syzpZPPq4
+         6UYXCteZ3qSN0H8xMwNUA+u0PTS4b/jHfnS7eagW27smCPlAFCcoh6j33PkCyUM9puYW
+         JWfqI4Dt4ipR6C8Xli2XcaO9PNmQasxQhsyAewQ62PM1z8a67nmUFvL1+6QmhdTujwJU
+         QDaIqIVz0QkYqAJqIudWDE1rbgW2uzADHbWTPyMceon8DI5Wk+Lm9YsUljiUH6Z8tPlQ
+         o7eA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:content-language:accept-language:in-reply-to
+         :references:message-id:date:thread-index:thread-topic:subject:cc:to
+         :from:dkim-signature;
+        bh=YdaFJzBn6sxPYRODaHtQy+zEeK8fVVlIABX0x0X2QyU=;
+        fh=oUeMRuzAi1zYt4f/zUREsvIuZYefSnzvK0WXemKEbWE=;
+        b=Kdzg264sO0c3uh7B32Kb9+78p5WcOnCsR+08QdBi20d8yg11PBbls+slN7/sJyi4gD
+         DLq8MlVawlBPqp3B8uFzpwcQN+HQbS1uv2JjoCe6jeNhclca6s7ghQW7bpUQXvpLVC+d
+         kAuNCoWl00yBO6NTdxhop9mJyXc2JEAfL1ZPDsxOrkEueA3gnzKfd4Y+YbBCsbOMnXy5
+         MCZy6UNtyJK79Wr4DNmvgSatGHPI0w3/1eZDsd9qBlbNN37kImup0FZv64ikY7/ox86c
+         km8c0rX52qRN0/9XZmV+zkcKmrh+ZKKD24La1UD7mfjDdQi/KA1mb6bU/8UWuuOAFHbc
+         rWxw==;
+        dara=google.com
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@purdue.edu header.s=selector1 header.b=IwQVZ6CE;
+       arc=pass (i=1 spf=pass spfdomain=purdue.edu dkim=pass dkdomain=purdue.edu dmarc=pass fromdomain=purdue.edu);
+       spf=pass (google.com: domain of digitwin2024@purdue.edu designates 2a01:111:f403:2416::714 as permitted sender) smtp.mailfrom=digitwin2024@purdue.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=purdue.edu
+Return-Path: <digitwin2024@purdue.edu>
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com (mail-co1nam11on20714.outbound.protection.outlook.com. [2a01:111:f403:2416::714])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-7e6db5fc075si9609100a12.161.2024.09.30.15.03.37
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 30 Sep 2024 15:03:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of digitwin2024@purdue.edu designates 2a01:111:f403:2416::714 as permitted sender) client-ip=2a01:111:f403:2416::714;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@purdue.edu header.s=selector1 header.b=IwQVZ6CE;
+       arc=pass (i=1 spf=pass spfdomain=purdue.edu dkim=pass dkdomain=purdue.edu dmarc=pass fromdomain=purdue.edu);
+       spf=pass (google.com: domain of digitwin2024@purdue.edu designates 2a01:111:f403:2416::714 as permitted sender) smtp.mailfrom=digitwin2024@purdue.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=purdue.edu
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=mQbxtQd9YSGSO67O7zFV3Ze/OE2+x5xBAVgBA4Fqrh8G4JK5SBwBWX/RMMqA++HhfdCEgG0N+aeHVQUq1J9W6OzfxW42RqsPyFTgBy2OTu/BTe79ceEbji93r3GP7NWEf9q18sLXH/EJTi4uM7g5A8kBzQChnIlcW1Y5GCczSYxjhxcvSYgxxCxYi9uPEoWj1ny9S4E3SOdzhdi2uQ4Pq+2sQxdh1g+B35wSZmS8/ANjJFZfoTmThhzhzKaVxnkqcYwuqTnlNlgXC9xJRNEoggB+svcc55JiwWzJfXRxmvvgw1lmuG2Kp9wbwHB383TDo1bEqPhj/akyfymqvZJPpA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=YdaFJzBn6sxPYRODaHtQy+zEeK8fVVlIABX0x0X2QyU=;
+ b=m2VhtHknSmEvT17MJXUGUwRH5yJNiNbPIzOr1v5rsGPgFLR/YEUNe+OL/C65YAwKrQH95ZDTkUYsEQfJGhukbSplj4s8opcn+Uaep/5BEIjWrVQsa7wCm8nFXLyMom+9RNsodt6dzskZowTx2hSBeuzIGFN29b0s/H2hb47v70me9yVVF9ZRBGWN6m7nc4zWrFpGO4mUSvK/hF9siPruV6yI9rViPOYqpt3SmXbSs5tJlf1SmO1ntqU76mzbkepHTqW8xjKu6hAtuPzpaDO0UYRX6J1xqDrDdEC6U6AMhxB7cpe9ptjcmDmxtK1fJlxpP4Up2RvSE6KYRNuRJ74WKQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=purdue.edu; dmarc=pass action=none header.from=purdue.edu;
+ dkim=pass header.d=purdue.edu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=purdue.edu;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=YdaFJzBn6sxPYRODaHtQy+zEeK8fVVlIABX0x0X2QyU=;
+ b=IwQVZ6CEAz2Cw7fIwCpsWpSzw1730zDx2QO5OvmU9gTcuhcsuBbc/DtEDlab6E/scYjg4TusXe4kQ54vqsaE/C/AdWHr7N9suMyeBmqFCqEx5M0eFsJ5fp08I1f88Ykmnb8V9G7fo+YG06kgQLKj29lzln9aGtzl/AGCi2IbdXU=
+Received: from IA0PR22MB4401.namprd22.prod.outlook.com (2603:10b6:208:483::6)
+ by LV3PR22MB4481.namprd22.prod.outlook.com (2603:10b6:408:199::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8005.27; Mon, 30 Sep
+ 2024 22:03:29 +0000
+Received: from IA0PR22MB4401.namprd22.prod.outlook.com
+ ([fe80::1857:961a:70bd:21a7]) by IA0PR22MB4401.namprd22.prod.outlook.com
+ ([fe80::1857:961a:70bd:21a7%7]) with mapi id 15.20.8005.024; Mon, 30 Sep 2024
+ 22:03:29 +0000
+From: Digital Twin 2024 <digitwin2024@purdue.edu>
+To: "MD. SHAFIKUL ISLAM" <shafikul37@student.sust.edu>,
+	"azmine32@student.sust.edu" <azmine32@student.sust.edu>,
+	"mahfuz34@student.sust.edu" <mahfuz34@student.sust.edu>, "ahsan@ou.edu"
+	<ahsan@ou.edu>, "mmbappy@lsu.edu" <mmbappy@lsu.edu>, "ikramulh282@gmail.com"
+	<ikramulh282@gmail.com>
+CC: Digital Twin 2024 <digitwin2024@purdue.edu>
+Subject: RE: Poster Submission for DigiTwin 2024: Manufacturing
+ Sustainability, Safety, and Resilience
+Thread-Topic: Poster Submission for DigiTwin 2024: Manufacturing
+ Sustainability, Safety, and Resilience
+Thread-Index: AQHbD3siSJQNxxE1tUGYii10xvXn/7Jwt5SA
+Date: Mon, 30 Sep 2024 22:03:28 +0000
+Message-ID:
+ <IA0PR22MB4401B7A226577E74A034687CAA762@IA0PR22MB4401.namprd22.prod.outlook.com>
+References:
+ <CAHwzmhAQufd89Ry2Lg=uFUcOHFA9Xh7Dbq5qp10aYcm=3Og8tQ@mail.gmail.com>
+In-Reply-To:
+ <CAHwzmhAQufd89Ry2Lg=uFUcOHFA9Xh7Dbq5qp10aYcm=3Og8tQ@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=purdue.edu;
+x-ms-exchange-messagesentrepresentingtype: 1
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: IA0PR22MB4401:EE_|LV3PR22MB4481:EE_
+x-ms-office365-filtering-correlation-id: 831d0e43-d080-47ab-483e-08dce19bb73f
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|366016|376014|38070700018;
+x-microsoft-antispam-message-info:
+ =?us-ascii?Q?DI3tvWXcEIoYQ4kK8J2OFQqOQhQMcTBScxlWJNu55r8OPBaji3Sy24pkpU9X?=
+ =?us-ascii?Q?djID+6jXqJ8/EPq+qqta5tqIR5sQnqnn0noeV2Xq7pvnxLNaeUCYiOwrTvx+?=
+ =?us-ascii?Q?DCz2WGB1YjONo0pkdJtR8Pg8SXzQTlFCUQwBYnc0wi4Q0q64IsGBjsw81OUQ?=
+ =?us-ascii?Q?aOynHsJJUh2ydypwhuxNQssfYuJ9e7z56GN0kse51ljyNsyIwTSezGgpWf4B?=
+ =?us-ascii?Q?12vaN2xm3abf5M3KcdVcFe4iu21edcwUon38mmuCAynhr6Otg0yUkX6bArz2?=
+ =?us-ascii?Q?xol3opBxTx63iLvY3Gn69c0SxgMCXF7KuRpBiq7IibUTPfQZg9bPhM9vEr05?=
+ =?us-ascii?Q?f41hrmdCxZd3Y7O7HOoYh1/j7KCGf02o5TkUJryp1WtIXryT7WNwVzCxYiaZ?=
+ =?us-ascii?Q?i5pUsi4aEYt3q1/eL34fx968BlTvcuVM+2qWAE77eVMgISbVuBmusgzWSanb?=
+ =?us-ascii?Q?Xhu8M29vc+noKZme1R5jeo6kDMmJFoHjFcdqTO0dLu0QzkdfUt4j5xwRBAzy?=
+ =?us-ascii?Q?vhFEMG/SMdakb6N9Qga2cgdcBT0MiWLKXU4vLjWe70fUpogtskaldBOOIJwx?=
+ =?us-ascii?Q?J7WjvvvgtP3qmYk4COlsog8TCuazHtc1EACKcJpy+R43CIOH3PSD454zeSUQ?=
+ =?us-ascii?Q?B/5l8KuBkk/Bmm1GrLVJz98slW/UesN8X0YLsHZssS4vuFRKy9SWhfjB/t0v?=
+ =?us-ascii?Q?ghBpwnBpnTsZbDYErA3aP7otv8KCcX59whhvTAuSthWaTGrLDcAIz4EnpTU+?=
+ =?us-ascii?Q?jd1lt9iGxA8f57swKSLF02K5aJEwF53FwkSlLdRo80TB2KmiJh/HwjAa9O/3?=
+ =?us-ascii?Q?tJQp2gAuNTOMXFUGieTejMCA13UuomLqipSxbMXzVGVc1IvdEex0YV62RZd8?=
+ =?us-ascii?Q?3ahxddwkSo42URuxSMOrdJseFYaDEPEocm7ylnP9wwGo5G+hfTjs49gUk6M6?=
+ =?us-ascii?Q?2kfOW5RkR1VLcvPLV64tPPBDXRkwXm6Hh/TaICbwb7sSv8uLpeVz+DIE7J8Y?=
+ =?us-ascii?Q?JL8yVDmNsvuHcomhfXByhAFXOrbZkQ1KGUf7vy3MRBeClkwOi8ySYkRwSxck?=
+ =?us-ascii?Q?iYlvVk0I+t0ktWf9bdUtHW9YuiOFpAt+bXLaNNi/D/TiI9jULLl69uJjv3dG?=
+ =?us-ascii?Q?XMqitO9cCC1lPXKbUSIZJ+U52+dW367M1p03ZIAFboZVc6RmIbt4uihKzvKN?=
+ =?us-ascii?Q?eb0jNBW1xFQiEU/3IWXcRJNkp9lvjqoUU/w1vD2jq5uWEwPp0wXj2GhlrOlj?=
+ =?us-ascii?Q?wFtozT8blaLwTULX+lrHmimtQHqOcKw2aTqIr6GRxV1avi50Yh7MweX8JddY?=
+ =?us-ascii?Q?QTzOdygvAoKaLiG7mlWdMZVjXxMYGLgSBmUO7Gk8lbmJigFd+SYS4lUDNGI2?=
+ =?us-ascii?Q?JBymIj0=3D?=
+x-forefront-antispam-report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:IA0PR22MB4401.namprd22.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(38070700018);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0:
+ =?us-ascii?Q?hO7TUBrv5TDUobaKjSjyxqLMlSgBYxPefE1RUE+Y5xd6k9y+H0KsIklK9po0?=
+ =?us-ascii?Q?fAUM00cm2JjdrvGLMWSG0zudi+/sD6KgVpX4//l/iHwh8WnpCcx8TQzArJA0?=
+ =?us-ascii?Q?/TXyteuVZ6XKe9bbWT3CddGG8m1MiE4zDbfwiD0Wwi4OKZqHfKliReypB2R5?=
+ =?us-ascii?Q?k7bwHlRbGbw+qhEA2/quI/NcuV4u7BqsEC/VlQ75fDATsqLSI9AI0trWc1dZ?=
+ =?us-ascii?Q?sXci0FhC3CSTdxL1TCG6bv/D4c3Cr8K9g1BFoII3cjLShn0J8tcS6Eo0bIsB?=
+ =?us-ascii?Q?gKBsxvhixmCYAFF8C8+ci6M+7cyarHbcsViPkxs8Uqp2vVTpEJkMmwY/TcWI?=
+ =?us-ascii?Q?pnASzMRrbQ4XifmSwLwUbpgpaVeAoIdBr4UAPITqloW5N3xDHefW4RO6Bl/t?=
+ =?us-ascii?Q?V7kTtPENRvlrrP4YjeluSIHykl9pf98DqcvlP00wcvNFntut3DIanqHBa0JW?=
+ =?us-ascii?Q?RebksBElXNjLgwuXg+rNdiaHBxgLBxt/r2OcToM/a1+MSz6C2IxEHcDCuBY0?=
+ =?us-ascii?Q?GYmNu7O3JL4rcNufq0lY2qe/Y55zDDNQ4aJ5+Qvpol1qiUq8U0in4nlEj/sp?=
+ =?us-ascii?Q?iwJwyYXBJqYLjE5EB2K1nKtcEVwSJ+veo0JjFT2rfsfYp690lij2zuWOa9BT?=
+ =?us-ascii?Q?VlIO5zQAWcbBDrKv4dSYP8nEq2RyiAa1fCFS1tfeWGDKM5j/dM12J0XTrsx0?=
+ =?us-ascii?Q?9Y60TvTTL99QUuAnrYSC0MBVrDdrAroAaIFec9UE0mOecmTfjw0s5C8cNGqO?=
+ =?us-ascii?Q?TMayshhnZXEvoIlyWqaWYtXecDbgEtdYNEaSi+yGKe+vPyOi0zWEJ1AO4zPy?=
+ =?us-ascii?Q?k5sh3SsB8WQ9si1mi9UahYDK7KJ2amyfbSeqEEO+DEq9KOg7/j6qskuYURlK?=
+ =?us-ascii?Q?ChbtrV0dZhgg3bZgJMlEHVBaaiUPzgPwXBqRQO75POPtww8qjLKqy7xCbRW9?=
+ =?us-ascii?Q?zeunpR+RmGYWIvI2qgbNViu1/ZFRoGmdl5QStlCksK4hurn+EPTiFOldT4We?=
+ =?us-ascii?Q?bvCl60RvWHv862DkwsZ2fFj9lVWaPZ5D/b3X3mSxIMisb1QIGoXdJldJAJFq?=
+ =?us-ascii?Q?0YRy6MDmjN8+a94gnX6Mf2xma/q8OpOaSQ40E4m2Aq0yn/xki/pIqXCY6xxs?=
+ =?us-ascii?Q?rZxezlBUAg1y0B2Vz2iZ5Iy+dKPlwA9SG2nYDZeHvSbVdUGJYsXvcfyxc7K0?=
+ =?us-ascii?Q?6IdvIHY4LtSC8CLn4e9O8Ccttkf4A1qd/qbrbaffL6m+GX48YAt1ax7fVbUJ?=
+ =?us-ascii?Q?3kad0c+nJaMyjS/eQpHVSCQtOlgmnqc1lUKObPZjDH21/CmgkjPKovZ+De6o?=
+ =?us-ascii?Q?2pg/7OmxgV1J5coeEKT4j5dMwvtx/K5UADjKj0Dc9TEWioanU0TUbkD7fyrB?=
+ =?us-ascii?Q?U2tvDJX/XnFUpyJxOJrTu+Vg3BMvacjGi+f/NoGeLI8DAFuh+jRiW3maYcfI?=
+ =?us-ascii?Q?29fbMjlHsN2NbHjjCPfQSfX7vCU+NbzVUFXohWWkjouoXqJL2lI7jMdQ9bO8?=
+ =?us-ascii?Q?wQBEzBW1U359QQKs++UeT4vDcLcLIjUrprdSCMz3PLqqnS5jmHV1/XoDMTDE?=
+ =?us-ascii?Q?Hy97wshYNKMHix2I23myMmtBkyA8VH3RIMrhRsLH?=
+Content-Type: multipart/alternative;
+	boundary="_000_IA0PR22MB4401B7A226577E74A034687CAA762IA0PR22MB4401namp_"
+MIME-Version: 1.0
+X-OriginatorOrg: purdue.edu
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: IA0PR22MB4401.namprd22.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 831d0e43-d080-47ab-483e-08dce19bb73f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Sep 2024 22:03:28.9715
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 4130bd39-7c53-419c-b1e5-8758d6d63f21
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Kt502OCruW0AJDFiwR0BgviMNxLDf956zHyXC2FdhwTsiyDvgXVd6apQZpf6QfrdrOHMR7YJt8dBndwjcAfH0Q==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV3PR22MB4481
+
+--_000_IA0PR22MB4401B7A226577E74A034687CAA762IA0PR22MB4401namp_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Dear MD Shafikul Islam,
+
+Your poster titled, "Sustainable Management of Rare Earth Elements for Clea=
+n Energy Using Prescriptive Digital Twins," has been accepted for poster pr=
+esentation. Congratulations!
+
+You are cordially invited to join us at the 2024 Digital Twin for Manufactu=
+ring Sustainability, Safety, and Resilience (DigiTwin for MSSR), October 15=
+-16, in West Lafayette, Indiana, USA. From dynamic keynote speakers to inte=
+ractive workshops and numerous career and networking opportunities, the 202=
+4 DigiTwin for MSSR promises to ignite inspiration and foster collaboration=
+, providing the brightest minds in Digital Twin in industrial applications =
+with a chance to shine.
+
+All participants must complete payment of their registration by October 13t=
+h. Failure in registration may result in your presentation being withdrawn =
+from the conference. View rates and register here<https://cvent.me/rn28oo>.
+
+We look forward to seeing you in West Lafayette!
+
+Best regards,
+Xingyu Li
+On behalf of DigiTwin 2024 for MSSR Organizing Committee
+
+
+From: MD. SHAFIKUL ISLAM <shafikul37@student.sust.edu>
+Sent: Wednesday, September 25, 2024 2:44 PM
+To: Digital Twin 2024 <digitwin2024@purdue.edu>; azmine32@student.sust.edu;=
+ mahfuz34@student.sust.edu; ahsan@ou.edu; mmbappy@lsu.edu; ikramulh282@gmai=
+l.com
+Subject: Poster Submission for DigiTwin 2024: Manufacturing Sustainability,=
+ Safety, and Resilience
+
+You don't often get email from shafikul37@student.sust.edu<mailto:shafikul3=
+7@student.sust.edu>. Learn why this is important<https://aka.ms/LearnAboutS=
+enderIdentification>
+---- External Email: Use caution with attachments, links, or sharing data -=
+---
+
+
+Dear DigiTwin 2024 Organizing Committee,
+
+I hope you are doing well. I am attaching our student poster submission for=
+ the DigiTwin 2024 Conference on Manufacturing Sustainability, Safety, and =
+Resilience.
+
+Submission Details:
+* Title: Sustainable Management of Rare Earth Elements for Clean Energy Usi=
+ng Prescriptive Digital Twins
+* Authors: Mahfuz Ahmed Anik , Iqramul Hoque , MD Shafikul Islam, Azmine To=
+ushik Wasi, Md Manjurul Ahsan and Mahathir Mohammad Bappy
+* Track: Student Posters
+* Topic: Digital twins for sustainable resource management
+* Poster Size: A0 Size (Landscape)
+
+Overview:
+The rising demand for clean energy technologies, such as electric vehicles =
+and wind turbines, has significantly increased the need for Rare Earth Elem=
+ents (REEs) like neodymium and dysprosium. However, the traditional methods=
+ of REE extraction involve severe environmental degradation and supply chai=
+n risks, particularly due to geopolitical dependencies. Our research propos=
+es the development of a Prescriptive Digital Twin to optimize REE extractio=
+n processes. This twin will provide real-time data-driven insights to reduc=
+e energy consumption, minimize waste, and mitigate environmental impacts. O=
+ur solution offers a sustainable blueprint for resource-efficient extractio=
+n of REEs, supporting the transition to clean energy technologies.
+
+All authors are also included in the CC field of this email.
+
+We kindly request you to review our submission and look forward to the oppo=
+rtunity to present our work at the conference. Please do not hesitate to re=
+ach out if any further information or clarification is needed.
+
+Thank you for your time and consideration.
+
+Sincerely,
+MD Shafikul Islam
+Student, Shahjalal University of Science and Technology, Bangladesh
+On behalf of all authors
+
+--_000_IA0PR22MB4401B7A226577E74A034687CAA762IA0PR22MB4401namp_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:DengXian;
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:Aptos;}
+@font-face
+	{font-family:"Segoe UI";
+	panose-1:2 11 5 2 4 2 4 2 2 3;}
+@font-face
+	{font-family:"\@DengXian";
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	font-size:12.0pt;
+	font-family:"Aptos",sans-serif;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;}
+span.EmailStyle21
+	{mso-style-type:personal-compose;
+	font-family:"Aptos",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;
+	mso-ligatures:none;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+/* List Definitions */
+@list l0
+	{mso-list-id:118836977;
+	mso-list-template-ids:1928471922;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l0:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l0:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l0:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l0:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l0:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l0:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l0:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l0:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-US" link=3D"blue" vlink=3D"purple" style=3D"word-wrap:brea=
+k-word">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt">Dear MD Shafikul Is=
+lam,<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt"><o:p>&nbsp;</o:p></=
+span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt">Your poster titled,=
+ &#8220;Sustainable Management of Rare Earth Elements for Clean Energy Usin=
+g Prescriptive Digital Twins,&#8221; has been
+<b>accepted</b> for poster presentation. <b>Congratulations!</b><o:p></o:p>=
+</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt"><o:p>&nbsp;</o:p></=
+span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt">You are cordially i=
+nvited to join us at the 2024 Digital Twin for Manufacturing Sustainability=
+, Safety, and Resilience (DigiTwin for MSSR), October 15-16, in West Lafaye=
+tte, Indiana, USA. From dynamic keynote
+ speakers to interactive workshops and numerous career and networking oppor=
+tunities, the 2024 DigiTwin for MSSR promises to ignite inspiration and fos=
+ter collaboration, providing the brightest minds in Digital Twin in industr=
+ial applications with a chance to
+ shine.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt"><o:p>&nbsp;</o:p></=
+span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt">All participants mu=
+st complete payment of their registration by
+<b>October 13th</b>. Failure in registration may result in your presentatio=
+n being withdrawn from the conference. View rates and register
+<a href=3D"https://cvent.me/rn28oo">here</a>.&nbsp; <o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt"><o:p>&nbsp;</o:p></=
+span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt">We look forward to =
+seeing you in West Lafayette!<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt"><o:p>&nbsp;</o:p></=
+span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt">Best regards,<o:p><=
+/o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt">Xingyu Li<o:p></o:p=
+></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt">On behalf of DigiTw=
+in 2024 for MSSR Organizing Committee<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt"><o:p>&nbsp;</o:p></=
+span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt"><o:p>&nbsp;</o:p></=
+span></p>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal"><b><span style=3D"font-size:11.0pt;font-family:&quot=
+;Calibri&quot;,sans-serif">From:</span></b><span style=3D"font-size:11.0pt;=
+font-family:&quot;Calibri&quot;,sans-serif"> MD. SHAFIKUL ISLAM &lt;shafiku=
+l37@student.sust.edu&gt;
+<br>
+<b>Sent:</b> Wednesday, September 25, 2024 2:44 PM<br>
+<b>To:</b> Digital Twin 2024 &lt;digitwin2024@purdue.edu&gt;; azmine32@stud=
+ent.sust.edu; mahfuz34@student.sust.edu; ahsan@ou.edu; mmbappy@lsu.edu; ikr=
+amulh282@gmail.com<br>
+<b>Subject:</b> Poster Submission for DigiTwin 2024: Manufacturing Sustaina=
+bility, Safety, and Resilience<o:p></o:p></span></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" align=3D"left" width=3D"100%" style=3D"width:100.0%">
+<tbody>
+<tr>
+<td width=3D"0" style=3D"width:.3pt;background:#A6A6A6;padding:5.25pt 1.5pt=
+ 5.25pt 1.5pt">
+</td>
+<td width=3D"100%" style=3D"width:100.0%;background:#EAEAEA;padding:5.25pt =
+3.75pt 5.25pt 11.25pt;aspect-ratio: revert !important;background:revert !im=
+portant;block-size: revert !important;border:revert !important;bottom: reve=
+rt !important;color:revert !important;color-scheme: revert !important;conte=
+nt-visibility: revert !important;cursor:revert !important;direction:revert =
+!important;display:revert !important;font-size:revert !important;height:rev=
+ert !important;hyphens: revert !important;letter-spacing:revert !important;=
+line-height:revert !important;margin:revert !important;opacity: revert !imp=
+ortant;order: revert !important;outline: revert !important;overflow:revert =
+!important;padding:revert !important;position:revert !important;resize: rev=
+ert !important;rotate: revert !important;scale: revert !important;tab-size:=
+ revert !important;table-layout:revert !important;text-align:revert !import=
+ant;text-indent:revert !important;text-orientation: revert !important;text-=
+overflow: revert !important;text-shadow:revert !important;text-transform:re=
+vert !important;text-wrap: revert !important;top:revert !important;transiti=
+on: revert !important;user-select: revert !important;vertical-align:revert =
+!important;visibility:revert !important;white-space:revert !important;width=
+:revert !important;word-break:revert !important;word-spacing:revert !import=
+ant;writing-mode:revert !important;zoom: revert !important">
+<div>
+<p class=3D"MsoNormal" style=3D"mso-element:frame;mso-element-frame-hspace:=
+2.25pt;mso-element-wrap:around;mso-element-anchor-vertical:paragraph;mso-el=
+ement-anchor-horizontal:column;mso-height-rule:exactly">
+<span style=3D"font-size:9.0pt;font-family:&quot;Segoe UI&quot;,sans-serif;=
+color:#212121">You don't often get email from
+</span><span style=3D"color:black"><a href=3D"mailto:shafikul37@student.sus=
+t.edu"><span style=3D"font-size:9.0pt;font-family:&quot;Segoe UI&quot;,sans=
+-serif">shafikul37@student.sust.edu</span></a></span><span style=3D"font-si=
+ze:9.0pt;font-family:&quot;Segoe UI&quot;,sans-serif;color:#212121">.
+</span><span style=3D"color:black"><a href=3D"https://aka.ms/LearnAboutSend=
+erIdentification"><span style=3D"font-size:9.0pt;font-family:&quot;Segoe UI=
+&quot;,sans-serif">Learn why this is important</span></a></span><span style=
+=3D"font-size:9.0pt;font-family:&quot;Segoe UI&quot;,sans-serif;color:#2121=
+21">
+<o:p></o:p></span></p>
+</div>
+</td>
+<td width=3D"75" style=3D"width:56.25pt;background:#EAEAEA;padding:5.25pt 3=
+.75pt 5.25pt 3.75pt;aspect-ratio: revert !important;background:revert !impo=
+rtant;block-size: revert !important;border:revert !important;bottom: revert=
+ !important;color:revert !important;color-scheme: revert !important;content=
+-visibility: revert !important;cursor:revert !important;direction:revert !i=
+mportant;display:revert !important;font-size:revert !important;height:rever=
+t !important;hyphens: revert !important;letter-spacing:revert !important;li=
+ne-height:revert !important;margin:revert !important;opacity: revert !impor=
+tant;order: revert !important;outline: revert !important;overflow:revert !i=
+mportant;padding:revert !important;position:revert !important;resize: rever=
+t !important;rotate: revert !important;scale: revert !important;tab-size: r=
+evert !important;table-layout:revert !important;text-align:revert !importan=
+t;text-indent:revert !important;text-orientation: revert !important;text-ov=
+erflow: revert !important;text-shadow:revert !important;text-transform:reve=
+rt !important;text-wrap: revert !important;top:revert !important;transition=
+: revert !important;user-select: revert !important;vertical-align:revert !i=
+mportant;visibility:revert !important;white-space:revert !important;width:r=
+evert !important;word-break:revert !important;word-spacing:revert !importan=
+t;writing-mode:revert !important;zoom: revert !important;align: left !impor=
+tant">
+</td>
+</tr>
+</tbody>
+</table>
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"3" cellpadding=
+=3D"0" width=3D"100%" style=3D"width:100.0%;background:#FFF0A0">
+<tbody>
+<tr>
+<td style=3D"padding:3.75pt 3.75pt 3.75pt 3.75pt">
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ve=
+rdana&quot;,sans-serif;color:black">----
+<b>External Email</b>: Use caution with attachments, links, or sharing data=
+ ----<o:p></o:p></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<div>
+<div>
+<p>Dear DigiTwin 2024 Organizing Committee,<o:p></o:p></p>
+<p>I hope you are doing well. I am attaching our student poster submission =
+for the&nbsp;<strong><span style=3D"font-family:&quot;Aptos&quot;,sans-seri=
+f">DigiTwin 2024 Conference on Manufacturing Sustainability, Safety, and Re=
+silience</span></strong>.<o:p></o:p></p>
+<p><strong><span style=3D"font-family:&quot;Aptos&quot;,sans-serif">Submiss=
+ion Details:</span></strong><o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto;margin-left:47.25pt;text-indent:-.25in;mso-list:l0 level1 lfo2">
+<![if !supportLists]><span style=3D"font-size:10.0pt;font-family:Symbol"><s=
+pan style=3D"mso-list:Ignore">&middot;<span style=3D"font:7.0pt &quot;Times=
+ New Roman&quot;">
+</span></span></span><![endif]><strong><span style=3D"font-family:&quot;Apt=
+os&quot;,sans-serif">Title</span></strong>: Sustainable Management of Rare =
+Earth Elements for Clean Energy Using Prescriptive Digital Twins<o:p></o:p>=
+</p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto;margin-left:47.25pt;text-indent:-.25in;mso-list:l0 level1 lfo2">
+<![if !supportLists]><span style=3D"font-size:10.0pt;font-family:Symbol"><s=
+pan style=3D"mso-list:Ignore">&middot;<span style=3D"font:7.0pt &quot;Times=
+ New Roman&quot;">
+</span></span></span><![endif]><strong><span style=3D"font-family:&quot;Apt=
+os&quot;,sans-serif">Authors</span></strong>: Mahfuz Ahmed Anik , Iqramul H=
+oque , MD Shafikul Islam, Azmine Toushik Wasi, Md Manjurul Ahsan and Mahath=
+ir Mohammad Bappy<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto;margin-left:47.25pt;text-indent:-.25in;mso-list:l0 level1 lfo2">
+<![if !supportLists]><span style=3D"font-size:10.0pt;font-family:Symbol"><s=
+pan style=3D"mso-list:Ignore">&middot;<span style=3D"font:7.0pt &quot;Times=
+ New Roman&quot;">
+</span></span></span><![endif]><strong><span style=3D"font-family:&quot;Apt=
+os&quot;,sans-serif">Track</span></strong>: Student Posters<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto;margin-left:47.25pt;text-indent:-.25in;mso-list:l0 level1 lfo2">
+<![if !supportLists]><span style=3D"font-size:10.0pt;font-family:Symbol"><s=
+pan style=3D"mso-list:Ignore">&middot;<span style=3D"font:7.0pt &quot;Times=
+ New Roman&quot;">
+</span></span></span><![endif]><strong><span style=3D"font-family:&quot;Apt=
+os&quot;,sans-serif">Topic</span></strong>: Digital twins for sustainable r=
+esource management<o:p></o:p></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;mso-margin-bottom-a=
+lt:auto;margin-left:47.25pt;text-indent:-.25in;mso-list:l0 level1 lfo2">
+<![if !supportLists]><span style=3D"font-size:10.0pt;font-family:Symbol"><s=
+pan style=3D"mso-list:Ignore">&middot;<span style=3D"font:7.0pt &quot;Times=
+ New Roman&quot;">
+</span></span></span><![endif]><strong><span style=3D"font-family:&quot;Apt=
+os&quot;,sans-serif">Poster Size</span></strong>: A0 Size (Landscape)<o:p><=
+/o:p></p>
+<p><strong><span style=3D"font-family:&quot;Aptos&quot;,sans-serif">Overvie=
+w</span></strong>:<br>
+The rising demand for clean energy technologies, such as electric vehicles =
+and wind turbines, has significantly increased the need for Rare Earth Elem=
+ents (REEs) like neodymium and dysprosium. However, the traditional methods=
+ of REE extraction involve severe
+ environmental degradation and supply chain risks, particularly due to geop=
+olitical dependencies. Our research proposes the development of a&nbsp;<str=
+ong><span style=3D"font-family:&quot;Aptos&quot;,sans-serif">Prescriptive D=
+igital Twin</span></strong>&nbsp;to optimize REE extraction
+ processes. This twin will provide real-time data-driven insights to reduce=
+ energy consumption, minimize waste, and mitigate environmental impacts. Ou=
+r solution offers a sustainable blueprint for resource-efficient extraction=
+ of REEs, supporting the transition
+ to clean energy technologies.<o:p></o:p></p>
+<p>All authors are also included in the CC field of this email.<o:p></o:p><=
+/p>
+<p>We kindly request you to review our submission and look forward to the o=
+pportunity to present our work at the conference. Please do not hesitate to=
+ reach out if any further information or clarification is needed.<o:p></o:p=
+></p>
+<p>Thank you for your time and consideration.<o:p></o:p></p>
+<p>Sincerely,<br>
+MD Shafikul Islam<br>
+Student, Shahjalal University of Science and Technology, Bangladesh<br>
+On behalf of all authors<o:p></o:p></p>
+</div>
+</div>
+</div>
+</body>
+</html>
+
+--_000_IA0PR22MB4401B7A226577E74A034687CAA762IA0PR22MB4401namp_--
